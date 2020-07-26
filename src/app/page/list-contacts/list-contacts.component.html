@@ -1,0 +1,92 @@
+
+<div class="container__list-contacts">
+  <div class="list-contacts__title">
+    <h3>Список контактов</h3>
+  </div>
+  <div class="list-contacts__search">
+
+  </div>
+  <div class="list-contacts__new-item">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="list-contacts__new-item__name col s4">
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="icon_prefix" type="text" class="validate" formControlName="name">
+            <label for="icon_prefix">First Name</label>
+          </div>
+        </div>
+        <div class="list-contacts__new-item__phone  col s4">
+          <div class="input-field">
+            <i class="material-icons prefix">phone</i>
+            <input id="icon_telephone" type="tel" class="validate" formControlName="phone">
+            <label for="icon_telephone">Telephone</label>
+          </div>
+        </div>
+        <div class="list-contacts__new-item__add  col s4">
+          <div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Добавить
+              <i class="material-icons right">add</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="list-contacts__items">
+
+  </div>
+
+</div>
+<div *ngIf="listContacts.length; else loading">
+  <div *ngFor="let contact of listContacts">
+  <app-contact [contact] = "contact" (onEdit)="onEditPosition($event)" (onRemove)="onRemovePosition($event)" ></app-contact>
+</div>
+</div>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
+
+
+<div class="modal" #modal>
+  <div class="modal-content">
+    <h4 class="mb1">Редактировать контакт</h4>
+    <form  [formGroup]="formEdit" (ngSubmit)="onSubmitEdit()">
+      <div class="row">
+        <div class="list-contacts__new-item__name col s6">
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="edit-name" type="text" value="" class="validate" formControlName="name">
+            <label for="icon_prefix">First Name</label>
+          </div>
+        </div>
+        <div class="list-contacts__new-item__phone  col s6">
+          <div class="input-field">
+            <i class="material-icons prefix">phone</i>
+            <input id="edit_telephone" type="tel" class="validate" formControlName="phone">
+            <label for="icon_telephone">Telephone</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="modal-action waves-effect waves-black btn-flat"
+          [disabled]="formEdit.disabled"
+        >
+          Отмена
+        </button>
+        <button
+          class="modal-action btn waves-effect"
+          type="submit"
+          [disabled]="formEdit.invalid || formEdit.disabled"
+        >
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>

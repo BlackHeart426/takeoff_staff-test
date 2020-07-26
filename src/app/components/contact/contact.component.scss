@@ -1,0 +1,20 @@
+.contact-block {
+  justify-content: space-between;
+  display: flex;
+
+  &__name {
+    width: 40%;
+  }
+
+  &__phone {
+    width: 40%;
+  }
+
+  &__actions {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 10%;
+  }
+}

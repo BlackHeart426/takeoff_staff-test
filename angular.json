@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "untitled1": {
+    "takeoff_staff-test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/untitled1",
+            "outputPath": "dist/takeoff_staff-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "untitled1:build"
+            "browserTarget": "takeoff_staff-test:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "untitled1:build:production"
+              "browserTarget": "takeoff_staff-test:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "untitled1:build"
+            "browserTarget": "takeoff_staff-test:build"
           }
         },
         "test": {
@@ -114,15 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "untitled1:serve"
+            "devServerTarget": "takeoff_staff-test:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "untitled1:serve:production"
+              "devServerTarget": "takeoff_staff-test:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "untitled1"
+    }
+  },
+  "defaultProject": "takeoff_staff-test",
+  "cli": {
+    "analytics": "8054dac1-489a-4336-9763-334e7b4bb8f8"
+  }
 }
