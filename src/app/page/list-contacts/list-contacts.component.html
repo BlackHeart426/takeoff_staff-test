@@ -38,10 +38,13 @@
   </div>
 
 </div>
-<div *ngIf="listContacts.length; else loading">
-  <div *ngFor="let contact of listContacts">
-  <app-contact [contact] = "contact" (onEdit)="onEditPosition($event)" (onRemove)="onRemovePosition($event)" ></app-contact>
+<div class="form-control">
+  <input type="text" placeholder="Search..." [(ngModel)]="searchStr">
 </div>
+<div *ngIf="listContacts.length; else loading">
+  <div *ngFor="let contact of listContacts | search: searchStr">
+    <app-contact [contact] = "contact" (onEdit)="onEditPosition($event)" (onRemove)="onRemovePosition($event)" ></app-contact>
+  </div>
 </div>
 
 <ng-template #loading>

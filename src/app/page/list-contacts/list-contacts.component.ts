@@ -20,6 +20,7 @@ export class ListContactsComponent implements OnInit, OnDestroy {
   gSub: Subscription
   modal: MaterialInstance
   contactId = null
+  searchStr = ''
 
   constructor(
     private listContactsService: ListContactsService
@@ -123,7 +124,7 @@ export class ListContactsComponent implements OnInit, OnDestroy {
       phone: this.formEdit.value.phone
     }
 
-    this.listContactsService.update(this.contactId, contact).subscribe(position => {
+    this.listContactsService.update(contact).subscribe(position => {
       MaterialService.toast('Контакт изменен')
       this.listContacts = this.listContacts.map((item, i) => {
         if (item.id === this.contactId) {

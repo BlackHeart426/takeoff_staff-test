@@ -12,8 +12,9 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
 import {AuthGuard} from './classes/auth.guard';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './classes/auth.interceptor';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MenuToolbarComponent} from './components/menu-toolbar/menu-toolbar.component';
+import { SearchPipe } from './pipe/search.pipe';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -30,14 +31,16 @@ const INTERCEPTOR_PROVIDER: Provider = {
     ListContactsComponent,
     ContactComponent,
     NotFoundComponent,
-    MenuToolbarComponent
+    MenuToolbarComponent,
+    SearchPipe
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [
     INTERCEPTOR_PROVIDER,
     AuthGuard

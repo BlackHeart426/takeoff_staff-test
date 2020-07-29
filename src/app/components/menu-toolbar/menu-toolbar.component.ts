@@ -1,34 +1,24 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
+import {ListContactsService} from '../../service/list-contacts.service';
+import {AuthService} from '../../service/auth.service';
 
 @Component({
   selector: 'app-menu-toolbar',
   templateUrl: './menu-toolbar.component.html',
   styleUrls: ['./menu-toolbar.component.scss']
 })
-export class MenuToolbarComponent implements OnInit, OnDestroy {
+export class MenuToolbarComponent implements OnInit {
 
-  pSub: Subscription
-  countProductInCart$: Observable<number>
-  cartTemplateDisplaySwitch: boolean = false
 
   constructor(
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void {
-    if (this.pSub) {
-      this.pSub.unsubscribe()
-    }
+  onLogout($event) {
+    this.authService.logout();
   }
-
-  onShowCart(toogle: boolean) {
-    setTimeout(() => {
-      this.cartTemplateDisplaySwitch = toogle
-    },500)
-
-  }
-
 }
